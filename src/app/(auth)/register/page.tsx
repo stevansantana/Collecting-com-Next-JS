@@ -4,7 +4,7 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 export default function Login() {
   return (
     <section className="rounded-lg bg-white p-12 shadow-lg">
-      <div className="mb-10 flex items-center justify-center">
+      <div className="mb-10 items-center justify-center flex">
         <FontAwesomeIcon icon={faUser} className="mr-3 h-10 w-10" />
         <h1 className="text-5xl">Cadastre-se</h1>
       </div>
