@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 :root {
-    --font-roboto: 'Roboto', sans-serif;
-  }
-  
+  --font-roboto: 'Roboto', sans-serif;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -13,6 +13,6 @@
 }
 
 body {
-    font-family: var(--font-roboto);
-    background-color: rgb(248 250 252);
+  font-family: var(--font-roboto);
+  background-color: rgb(248 250 252);
 }
