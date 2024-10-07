@@ -1,7 +1,9 @@
+'use client';
+
 export default function home() {
-    return(
-        <>
-            <p>Home - jlnkfnfdksds2</p>
-        </>
-    );
+  return (
+    <>
+      <p className='flex w-1 bg-slate-950 hover:cursor-pointer'>Home</p>
+    </>
+  );
 }
