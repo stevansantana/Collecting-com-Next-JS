@@ -19,7 +19,7 @@ export default function RootLayout({
       <body className='flex min-h-screen flex-col'>
         <ModalProvider>
           <Header />
-          <main className='flex min-h-screen items-center justify-center'>
+          <main className='flex flex-grow items-center justify-center'>
             {children}
           </main>
           <Footer />

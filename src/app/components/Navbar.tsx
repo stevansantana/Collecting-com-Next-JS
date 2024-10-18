@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation';
 
 export const Navbar: React.FC = () => {
   const pathname = usePathname();
-  const user: boolean = false;
+  const user: boolean = true;
 
   return (
     <nav>
@@ -13,8 +13,8 @@ export const Navbar: React.FC = () => {
           <>
             <li className='ml-auto'>
               <Link
-                className={`link ${pathname === '/ui/carrinho' ? 'font-bold' : ''} mr-10`}
-                href='/ui/carrinho'
+                className={`link ${pathname === '/ui/cart' ? 'font-bold' : ''} mr-10`}
+                href='/ui/cart'
               >
                 Carrinho
               </Link>

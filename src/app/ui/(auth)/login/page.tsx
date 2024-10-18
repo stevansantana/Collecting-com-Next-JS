@@ -122,12 +122,6 @@ export default function Login() {
           {passwordError && (
             <p className='max-w-52 text-xs text-red-500'>{passwordError}</p>
           )}
-
-          <div className='mt-2 flex justify-end'>
-            <Link className='text-end text-sm text-blue-800' href=''>
-              Esqueci a senha
-            </Link>
-          </div>
         </div>
 
         <input
@@ -136,10 +130,14 @@ export default function Login() {
           value='Entrar'
         />
 
-        <div className='mt-5 flex items-center justify-center'>
+        <div className='mt-7 flex items-center justify-between'>
           <Link className='text-end text-sm text-blue-800' href='/ui/register'>
             Criar uma conta
           </Link>
+
+          <Link className='text-end text-sm text-blue-800' href=''>
+             Esqueci a senha
+          </Link> 
         </div>
       </form>
     </section>
