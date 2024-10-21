@@ -53,9 +53,7 @@ export default function Product() {
             />
 
             <div className='flex flex-col justify-between'>
-              <h1 className='truncate text-4xl font-bold mb-10'>{product.title.length > 30
-                  ? product.title.substring(0, 30) + '...'
-                  : product.title}</h1>
+              <h1 className='break-words max-w-lg text-4xl font-bold mb-10'>{product.title}</h1>
               <span className='block text-3xl font-bold'>{formatCurrency(product.price)}</span>
 
               <button onClick={() => router.push('/ui/cart')} className='mt-auto w-full rounded-lg bg-blue-600 p-3 text-center font-bold text-white hover:bg-black'>Comprar</button>
@@ -68,7 +66,7 @@ export default function Product() {
           </div>
         </>
       ) : (
-        <p>Carreando produto</p>
+        <p>Carregando produto</p>
       )}
     </div>
   );

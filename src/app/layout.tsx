@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { ModalProvider } from './contexts/Modal/ModalContext';
+import { ModalProvider } from './contexts/modals/auth/register/ModalContext';
+import { ModalProductProvider } from './contexts/modals/product/create-product/ModalProductContext';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 
@@ -17,13 +18,15 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className='flex min-h-screen flex-col'>
-        <ModalProvider>
-          <Header />
-          <main className='flex flex-grow items-center justify-center'>
-            {children}
-          </main>
-          <Footer />
-        </ModalProvider>
+        <ModalProductProvider>
+          <ModalProvider>
+            <Header />
+            <main className='flex flex-grow items-center justify-center'>
+              {children}
+            </main>
+            <Footer />
+          </ModalProvider>
+        </ModalProductProvider>
       </body>
     </html>
   );

@@ -1,7 +1,7 @@
 'use client';
 
 import { useContext } from 'react';
-import { ModalContext } from '@/app/contexts/Modal/ModalContext';
+import { ModalContext } from '@/app/contexts/modals/auth/register/ModalContext';
 import {
   Description,
   Dialog,

@@ -7,11 +7,11 @@ interface ModalContextData {
   setIsOpen: (isOpen: boolean) => void;
 }
 
-export const ModalContext = createContext({} as ModalContextData);
-
 interface ModalProviderProps {
   children: React.ReactNode;
 }
+
+export const ModalContext = createContext({} as ModalContextData);
 
 export const ModalProvider: React.FC<ModalProviderProps> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);

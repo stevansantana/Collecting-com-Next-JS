@@ -29,8 +29,8 @@ export const Navbar: React.FC = () => {
             </li>
             <li>
               <Link
-                className={`link ${pathname === '/ui/userName' ? 'font-bold' : ''} mr-10`}
-                href='/'
+                className={`link ${pathname === '/ui/user' ? 'font-bold' : ''} mr-10`}
+                href='/ui/user'
               >
                 Stevan
               </Link>

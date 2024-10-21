@@ -63,7 +63,7 @@ export default function Login() {
   };
 
   return (
-    <section className='rounded-lg bg-white p-12 shadow-lg'>
+    <section className='rounded-lg bg-white p-12 shadow-lg mt-24 mb-24'>
       <div className='mb-10 flex items-center justify-center'>
         <FontAwesomeIcon icon={faUser} className='mr-3 h-10 w-10' />
         <h1 className='text-5xl'>Login</h1>

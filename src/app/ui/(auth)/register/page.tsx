@@ -3,8 +3,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { useContext } from 'react';
-import { ModalContext } from '@/app/contexts/Modal/ModalContext';
-import Modal from '@/app/contexts/Modal/Modal';
+import { ModalContext } from '@/app/contexts/modals/auth/register/ModalContext';
+import Modal from '@/app/contexts/modals/auth/register/Modal';
 import { z } from 'zod';
 import { useState } from 'react';
 
@@ -118,7 +118,7 @@ export default function Register() {
   };
 
   return (
-    <section className='rounded-lg bg-white p-12 shadow-lg'>
+    <section className='mb-24 mt-24 rounded-lg bg-white p-12 shadow-lg'>
       <div className='mb-10 flex items-center justify-center'>
         <FontAwesomeIcon icon={faUser} className='mr-3 h-10 w-10' />
         <h1 className='text-5xl'>Cadastre-se</h1>
