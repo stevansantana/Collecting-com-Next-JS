@@ -49,8 +49,6 @@ export default function User() {
     isOpen ? setIsOpen(false) : setIsOpen(true);
   }
 
-  products.length = 0;
-
   return (
     <div className='mb-24 mt-24'>
       {products.length > 0 ? (

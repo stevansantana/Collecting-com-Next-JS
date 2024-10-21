@@ -21,7 +21,6 @@ const formatCurrency = (value: number) => {
   }).format(value);
 };
 
-
 export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -48,7 +47,10 @@ export default function Home() {
   return (
     <div className='grid grid-cols-4 gap-10 p-20'>
       {products.map((product) => (
-        <div className='flex flex-col rounded-lg bg-white p-4 shadow-2xl' key={product.id}>
+        <div
+          className='flex flex-col rounded-lg bg-white p-4 shadow-2xl'
+          key={product.id}
+        >
           <div className='flex h-52 w-full items-center justify-center'>
             <Image
               src={product.image}
@@ -65,7 +67,11 @@ export default function Home() {
             </h2>
           </div>
 
-          <button type="button" onClick={() => router.push('/ui/product')} className='mt-auto w-full rounded-lg bg-blue-600 p-3 text-center font-bold text-white hover:bg-black'>
+          <button
+            type='button'
+            onClick={() => router.push(`/ui/product?id=${product.id}`)}
+            className='mt-auto w-full rounded-lg bg-blue-600 p-3 text-center font-bold text-white hover:bg-black'
+          >
             Comprar
           </button>
         </div>
