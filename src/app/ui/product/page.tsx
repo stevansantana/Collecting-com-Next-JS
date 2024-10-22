@@ -44,7 +44,7 @@ export default function Product() {
   }, [searchParams]);
 
   return (
-    <div className='container mx-auto mt-24 mb-24 px-4'>
+    <div className='container mx-auto mt-12 mb-12 px-4'>
       {product ? (
         <>
           <div className='flex flex-col md:flex-row justify-between items-stretch max-w-4xl mx-auto'>
@@ -52,14 +52,14 @@ export default function Product() {
               <Image
                 src={product.image}
                 alt={product.title}
-                width={300}
-                height={300}
+                width={120}
+                height={120}
               />
             </div>
 
             <div className='flex flex-col justify-between max-w-lg'>
-              <h1 className='break-words text-4xl font-bold mb-4'>{product.title}</h1>
-              <span className='block text-3xl font-bold mb-4'>{formatCurrency(product.price)}</span>
+              <h1 className='break-words text-lg font-bold mb-4'>{product.title}</h1>
+              <span className='block text-lg font-bold mb-4'>{formatCurrency(product.price)}</span>
 
               <button onClick={() => router.push('/ui/cart')} className='mt-auto w-full rounded-lg bg-blue-600 p-3 text-center font-bold text-white hover:bg-black'>
                 Comprar
@@ -68,8 +68,8 @@ export default function Product() {
           </div>
 
           <div className='mt-16 max-w-3xl mx-auto'>
-            <h1 className='text-4xl font-bold mb-4'>Descrição do produto</h1>
-            <p className='text-lg text-justify'>{product.description}</p>
+            <h1 className='text-lg font-bold mb-4'>Descrição do produto</h1>
+            <p className='text-sm text-justify'>{product.description}</p>
           </div>
         </>
       ) : (

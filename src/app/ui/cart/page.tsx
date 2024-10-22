@@ -58,31 +58,31 @@ export default function Cart() {
       {products.map((product) => (
         <div
           key={product.id}
-          className='mb-4 flex items-center justify-between border-b pb-4'
+          className='mb-4 flex flex-col items-center justify-between border-b pb-4'
         >
-          <div className='flex items-center'>
+          <div className='flex justify-between items-center mb-5 w-full'>
             <Image
               className='mr-4'
               src={product.image}
               alt={product.title}
-              width={80}
-              height={80}
+              width={50}
+              height={50}
             />
             <div>
-              <h2 className='text-lg mb-3'>
-                {product.title.length > 40
-                  ? product.title.substring(0, 40) + '...'
+              <h2 className='text-xs mb-3'>
+                {product.title.length > 20
+                  ? product.title.substring(0, 20) + '...'
                   : product.title}
               </h2>
-              <p>Quantidade:</p>
+              <p className='text-xs'>Quantidade:</p>
             </div>
           </div>
 
-          <div className='flex items-center basis-1/6 justify-between'>
-            <p className='text-xl font-bold mr-4'>{formatCurrency(product.price)}</p>
+          <div className='flex items-center basis-1/6 justify-between w-full'>
+            <p className='text-xs font-bold mr-4'>{formatCurrency(product.price)}</p>
 
             <button
-              className='text-red-500 hover:text-red-700 font-semibold'
+              className='text-xs text-red-500 hover:text-red-700 font-semibold'
               onClick={() => removeProduct(product.id)}
             >
               Remover
@@ -94,12 +94,12 @@ export default function Cart() {
       <div className='mt-4 text-right mb-16'>
         <p className='text-2xl mb-4 font-bold'>Total: {formatCurrency(calculateTotal())}</p>
 
-        <div className='flex justify-between items-center'>
-          <Link href='/ui/home' className='px-4 py-2 bg-gray-500 text-white font-semibold rounded hover:bg-gray-600'>
+        <div className='flex flex-col mt-10'>
+          <Link href='/ui/home' className='mb-5 text-center px-4 py-2 bg-gray-500 text-white font-semibold rounded hover:bg-gray-600'>
             Adicionar mais itens
           </Link>
 
-          <Link href='/ui/payment' className='px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600'>
+          <Link href='/ui/payment' className='text-center px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600'>
             Prosseguir Compra
           </Link>
         </div>

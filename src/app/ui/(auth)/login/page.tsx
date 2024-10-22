@@ -63,10 +63,10 @@ export default function Login() {
   };
 
   return (
-    <section className='rounded-lg bg-white p-12 shadow-lg mt-24 mb-24'>
+    <section className='bg-white p-12 shadow-lg mt-16 mb-16'>
       <div className='mb-10 flex items-center justify-center'>
-        <FontAwesomeIcon icon={faUser} className='mr-3 h-10 w-10' />
-        <h1 className='text-5xl'>Login</h1>
+        <FontAwesomeIcon icon={faUser} className='mr-3 h-8 w-8'/>
+        <h1 className='text-3xl'>Login</h1>
       </div>
 
       <form onSubmit={handleSubmit}>
@@ -131,11 +131,11 @@ export default function Login() {
         />
 
         <div className='mt-7 flex items-center justify-between'>
-          <Link className='text-end text-sm text-blue-800' href='/ui/register'>
+          <Link className='text-end text-xs text-blue-800' href='/ui/register'>
             Criar uma conta
           </Link>
 
-          <Link className='text-end text-sm text-blue-800' href=''>
+          <Link className='text-end text-xs text-blue-800' href=''>
              Esqueci a senha
           </Link> 
         </div>

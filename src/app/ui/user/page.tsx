@@ -50,11 +50,11 @@ export default function User() {
   }
 
   return (
-    <div className='mb-24 mt-24'>
+    <div className='mb-12 mt-12'>
       {products.length > 0 ? (
         <>
-          <h1 className='text-center text-5xl font-bold'>Seus produtos</h1>
-          <div className='grid grid-cols-4 gap-10 p-20'>
+          <h1 className='text-center text-2xl font-bold'>Seus produtos</h1>
+          <div className='grid grid-cols-1 gap-10 p-10'>
             {products.map((product) => (
               <div
                 className='flex flex-col rounded-lg bg-white p-4 shadow-2xl'
@@ -71,13 +71,13 @@ export default function User() {
 
                 <div className='mb-10'>
                   <h1 className='mb-3 truncate font-bold'>{product.title}</h1>
-                  <h2 className='text-2xl font-bold'>
+                  <h2 className='text-xs font-bold'>
                     {formatCurrency(product.price)}
                   </h2>
                 </div>
 
                 <button
-              className='text-red-500 hover:text-red-700 font-semibold'
+              className='text-xs text-red-500 hover:text-red-700 font-semibold'
               onClick={() => removeProduct(product.id)}
             >
               Remover Produto
@@ -87,13 +87,13 @@ export default function User() {
           </div>
         </>
       ) : (
-        <p className='text-5xl font-bold'>
+        <p className='text-xl font-bold text-center'>
           Você não tem produtos cadastrados :(
         </p>
       )}
 
-      <div className='mt-20 flex items-center justify-center'>
-      <button onClick={handleModal} className='mr-16 rounded-lg bg-blue-500 p-5 text-center text-2xl font-bold text-white hover:bg-blue-600'>
+      <div className='mt-10 mb-5 flex items-center justify-center'>
+      <button onClick={handleModal} className='rounded-lg bg-blue-500 p-5 text-center text-xl font-bold text-white hover:bg-blue-600'>
               Adicionar produto
             </button>
       </div>

@@ -1,70 +1,98 @@
 'use client';
+import Image from 'next/image';
+import menuHamburguer from '@/public/images/svg/bars-solid.svg';
+import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import iconCloseMenu from '@/public/images/svg/icon-close-menu.svg';
 
 export const Navbar: React.FC = () => {
   const pathname = usePathname();
-  const user: boolean = true;
+  const user: boolean = false;
+  const [menu, setMenu] = useState<boolean>(false);
+
+  function handleMenu() {
+    setMenu(!menu);
+  }
 
   return (
-    <nav>
-      <ul className='flex'>
-        {user ? (
-          <>
-            <li className='ml-auto'>
-              <Link
-                className={`link ${pathname === '/ui/cart' ? 'font-bold' : ''} mr-10`}
-                href='/ui/cart'
-              >
-                Carrinho
-              </Link>
-            </li>
-            <li>
-              <Link
-                className={`link ${pathname === '/ui/meus-pedidos' ? 'font-bold' : ''} mr-10`}
-                href='/ui/meusPedidos'
-              >
-                Meus pedidos
-              </Link>
-            </li>
-            <li>
-              <Link
-                className={`link ${pathname === '/ui/user' ? 'font-bold' : ''} mr-10`}
-                href='/ui/user'
-              >
-                Stevan
-              </Link>
-            </li>
-            <li>
-              <Link
-                className={`link ${pathname === '/logout' ? 'font-bold' : ''}`}
-                href='/'
-              >
-                Sair
-              </Link>
-            </li>
-          </>
-        ) : (
-          <>
-            <li className='ml-auto'>
-              <Link
-                className={`link ${pathname === '/ui/login' ? 'font-bold' : ''} mr-10`}
-                href='/ui/login'
-              >
-                Login
-              </Link>
-            </li>
-            <li>
-              <Link
-                className={`link ${pathname === '/ui/register' ? 'font-bold' : ''}`}
-                href='/ui/register'
-              >
-                Cadastrar
-              </Link>
-            </li>
-          </>
-        )}
-      </ul>
-    </nav>
+    <div>
+      <Image
+        className='cursor-pointer'
+        src={menuHamburguer}
+        alt='menu-ham'
+        width={25}
+        height={25}
+        onClick={handleMenu}
+      />
+
+      {menu && (
+        <nav className='fixed top-0 right-0 w-[65%] h-full bg-[hsl(0,0%,98%)] z-[999]'>
+          
+          <div className='p-5 flex justify-end'>
+            <Image src={iconCloseMenu} alt='icon-close-menu' width={25}
+            height={25} className='hover: cursor-pointer' onClick={handleMenu}/>
+          </div>
+
+          <ul className={`${user ? 'justify-between' : ''}} h-[45%] flex flex-col`}>
+            {user ? (
+              <>
+                <li className='flex justify-center'>
+                  <Link
+                    className={`link ${pathname === '/ui/cart' ? 'font-bold' : ''} w-full text-center p-4 hover:bg-slate-200`}
+                    href='/ui/cart'
+                  >
+                    Carrinho
+                  </Link>
+                </li>
+                <li className='flex justify-center'>
+                  <Link
+                    className={`link ${pathname === '/ui/meus-pedidos' ? 'font-bold' : ''}  w-full text-center p-4 hover:bg-slate-200`}
+                    href='/ui/meusPedidos'
+                  >
+                    Meus pedidos
+                  </Link>
+                </li>
+                <li className='flex justify-center'>
+                  <Link
+                    className={`link ${pathname === '/ui/user' ? 'font-bold' : ''}  w-full text-center p-4 hover:bg-slate-200`}
+                    href='/ui/user'
+                  >
+                    Stevan
+                  </Link>
+                </li>
+                <li className='flex justify-center'>
+                  <Link
+                    className={`link ${pathname === '/logout' ? 'font-bold' : ''} w-full text-center p-4 hover:bg-slate-200`}
+                    href='/'
+                  >
+                    Sair
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <li className='flex justify-center'>
+                  <Link
+                    className={`link ${pathname === '/ui/login' ? 'font-bold' : ''} w-full text-center p-4 hover:bg-slate-200`}
+                    href='/ui/login'
+                  >
+                    Login
+                  </Link>
+                </li>
+                <li className='flex justify-center'>
+                  <Link
+                    className={`link ${pathname === '/ui/register' ? 'font-bold' : ''} w-full text-center p-4 hover:bg-slate-200`}
+                    href='/ui/register'
+                  >
+                    Cadastrar
+                  </Link>
+                </li>
+              </>
+            )}
+          </ul>
+        </nav>
+      )}
+    </div>
   );
 };

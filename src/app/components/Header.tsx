@@ -8,17 +8,20 @@ export const Header: React.FC = () => {
   const showSearch: boolean = false;
 
   return (
-    <header
-      className={`${showSearch ? 'justify-around' : 'justify-between'} flex items-center bg-white p-8 shadow-md`}
-    >
-      <Link
-        className='font-sans text-4xl hover:bg-black hover:text-white'
-        href='/'
-      >
-        COLLECTING
-      </Link>
-      {showSearch ? <SearchInput /> : ''}
+    <header className = 'flex justify-between items-center bg-white p-8 shadow-md'>
+      <div>
+        <Link
+          className='font-sans text-2xl hover:bg-black hover:text-white'
+          href='/'
+        >
+          COLLECTING
+        </Link>
+        {showSearch ? <SearchInput /> : ''}
+      </div>
       <Navbar></Navbar>
     </header>
   );
 };
+
+/*
+className={`${showSearch ? 'justify-around' : 'justify-between'} flex items-center bg-white p-8 shadow-md`}*/

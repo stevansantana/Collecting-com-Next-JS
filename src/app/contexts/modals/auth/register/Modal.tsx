@@ -27,7 +27,7 @@ export default function Modal() {
         aria-hidden='true'
       />
 
-      <DialogPanel className='relative z-10 w-full max-w-lg rounded-lg bg-white p-6 shadow-lg'>
+      <DialogPanel className='relative z-10 w-full max-w-lg bg-white p-6 shadow-lg'>
         <header className='flex items-center justify-between'>
           <DialogTitle className='text-2xl font-semibold text-gray-800'>
             Cadastro

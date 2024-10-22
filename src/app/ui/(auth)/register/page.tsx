@@ -118,15 +118,14 @@ export default function Register() {
   };
 
   return (
-    <section className='mb-24 mt-24 rounded-lg bg-white p-12 shadow-lg'>
+    <section className='bg-white p-12 shadow-lg mt-16 mb-16'>
       <div className='mb-10 flex items-center justify-center'>
-        <FontAwesomeIcon icon={faUser} className='mr-3 h-10 w-10' />
-        <h1 className='text-5xl'>Cadastre-se</h1>
+        <FontAwesomeIcon icon={faUser} className='mr-3 h-8 w-8' />
+        <h1 className='text-3xl'>Cadastre-se</h1>
       </div>
 
       <form onSubmit={handleSubmit}>
-        <div className='mb-5 flex'>
-          <div className='mr-10 flex flex-col'>
+          <div className='flex flex-col'>
             <label
               className={`${errors.userName ? 'text-red-500' : 'text-black'}`}
               htmlFor='fName'
@@ -138,7 +137,7 @@ export default function Register() {
                 errors.userName
                   ? 'border-red-500 bg-red-50 text-red-500 placeholder-red-500'
                   : 'border-gray-300 text-black placeholder-gray-400'
-              } mb-1 mt-1 rounded-lg`}
+              } mb-5 mt-1 rounded-lg`}
               type='text'
               name='userName'
               id='fName'
@@ -167,7 +166,7 @@ export default function Register() {
                 errors.cpf
                   ? 'border-red-500 bg-red-50 text-red-500 placeholder-red-500'
                   : 'border-gray-300 text-black placeholder-gray-400'
-              } mb-1 mt-1 rounded-lg`}
+              } mb-5 mt-1 rounded-lg`}
               type='text'
               name='cpf'
               id='fCpf'
@@ -183,10 +182,8 @@ export default function Register() {
               </span>
             )}
           </div>
-        </div>
 
-        <div className='mb-5 flex'>
-          <div className='mr-10 flex flex-col'>
+          <div className='flex flex-col'>
             <label
               className={`block ${errors.email ? 'text-red-500' : 'text-black'}`}
               htmlFor='fEmail'
@@ -198,7 +195,7 @@ export default function Register() {
                 errors.email
                   ? 'border-red-500 bg-red-50 text-red-500 placeholder-red-500'
                   : 'border-gray-300 text-black placeholder-gray-400'
-              } mb-1 mt-1 rounded-lg`}
+              } mb-5 mt-1 rounded-lg`}
               type='email'
               name='email'
               id='fEmail'
@@ -225,7 +222,7 @@ export default function Register() {
                 errors.cellphone
                   ? 'border-red-500 bg-red-50 text-red-500 placeholder-red-500'
                   : 'border-gray-300 text-black placeholder-gray-400'
-              } mb-1 mt-1 rounded-lg`}
+              } mb-5 mt-1 rounded-lg`}
               type='tel'
               name='cellphone'
               placeholder='(DDD) 9xxxx-xxxx'
@@ -242,10 +239,8 @@ export default function Register() {
               </span>
             )}
           </div>
-        </div>
 
-        <div className='mb-5 flex'>
-          <div className='mr-10 flex flex-col'>
+          <div className='flex flex-col'>
             <label
               className={`block ${errors.password ? 'text-red-500' : 'text-black'}`}
               htmlFor='fPassword'
@@ -257,7 +252,7 @@ export default function Register() {
                 errors.password
                   ? 'border-red-500 bg-red-50 text-red-500 placeholder-red-500'
                   : 'border-gray-300 text-black placeholder-gray-400'
-              } mb-1 mt-1 rounded-lg`}
+              } mb-5 mt-1 rounded-lg`}
               type='password'
               name='password'
               minLength={6}
@@ -286,7 +281,7 @@ export default function Register() {
                 errors.confirmPassword
                   ? 'border-red-500 bg-red-50 text-red-500 placeholder-red-500'
                   : 'border-gray-300 text-black placeholder-gray-400'
-              } mb-1 mt-1 rounded-lg`}
+              } mt-1 rounded-lg`}
               type='password'
               name='confirmPassword'
               minLength={6}
@@ -302,7 +297,6 @@ export default function Register() {
               </span>
             )}
           </div>
-        </div>
 
         <input
           className='mt-10 block w-full cursor-pointer rounded-lg bg-blue-600 p-3 font-bold text-white hover:bg-black hover:font-bold'

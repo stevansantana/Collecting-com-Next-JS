@@ -1,5 +1,4 @@
 import {
-  Description,
   Dialog,
   DialogPanel,
   DialogTitle,
@@ -20,12 +19,9 @@ export default function ModalRegister() {
       
       <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
         <DialogPanel className="relative z-10 w-full max-w-lg rounded-lg bg-white p-6 shadow-lg max-h-[80vh] overflow-y-auto">
-          <DialogTitle className="text-2xl font-semibold text-gray-800">
+          <DialogTitle className="text-2xl font-semibold text-gray-800 mb-10">
             Cadastro de produto
           </DialogTitle>
-          <Description className="mb-10 mt-10 flex items-center justify-center text-xl">
-            Cadastre um produto para a venda
-          </Description>
 
           <form>
             <div className="flex flex-col mb-5">
