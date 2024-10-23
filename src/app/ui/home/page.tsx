@@ -41,11 +41,11 @@ export default function Home() {
   }, []);
 
   if (loading) {
-    return <p>Carregamento produtos...</p>;
+    return <p>Carregando produtos...</p>;
   }
 
   return (
-    <div className='grid grid-cols-1 gap-10 p-10'>
+    <div className='grid grid-cols-1 gap-10 p-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
       {products.map((product) => (
         <div
           className='flex flex-col rounded-lg bg-white p-4 shadow-2xl'

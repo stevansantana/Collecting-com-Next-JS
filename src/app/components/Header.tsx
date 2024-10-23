@@ -11,7 +11,7 @@ export const Header: React.FC = () => {
     <header className = 'flex justify-between items-center bg-white p-8 shadow-md'>
       <div>
         <Link
-          className='font-sans text-2xl hover:bg-black hover:text-white'
+          className='font-sans text-2xl hover:bg-black hover:text-white sm:text-4xl'
           href='/'
         >
           COLLECTING

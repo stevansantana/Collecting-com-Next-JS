@@ -24,7 +24,7 @@ const formatCurrency = (value: number) => {
 const url: string = 'https://fakestoreapi.com/products';
 
 export default function User() {
-  const {isOpen, setIsOpen} = useContext(ModalProductContext);
+  const { isOpen, setIsOpen } = useContext(ModalProductContext);
   const [products, setProducts] = useState<Product[]>([]);
 
   async function getProducts() {
@@ -53,8 +53,10 @@ export default function User() {
     <div className='mb-12 mt-12'>
       {products.length > 0 ? (
         <>
-          <h1 className='text-center text-2xl font-bold'>Seus produtos</h1>
-          <div className='grid grid-cols-1 gap-10 p-10'>
+          <h1 className='text-center text-2xl font-bold lg:text-4xl'>
+            Seus produtos
+          </h1>
+          <div className='grid grid-cols-1 gap-10 p-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
             {products.map((product) => (
               <div
                 className='flex flex-col rounded-lg bg-white p-4 shadow-2xl'
@@ -70,35 +72,38 @@ export default function User() {
                 </div>
 
                 <div className='mb-10'>
-                  <h1 className='mb-3 truncate font-bold'>{product.title}</h1>
-                  <h2 className='text-xs font-bold'>
+                  <h1 className='mb-3 truncate font-bold lg:text-xl'>{product.title}</h1>
+                  <h2 className='text-xs font-bold sm:text-sm md:text-base lg:text-lg'>
                     {formatCurrency(product.price)}
                   </h2>
                 </div>
 
                 <button
-              className='text-xs text-red-500 hover:text-red-700 font-semibold'
-              onClick={() => removeProduct(product.id)}
-            >
-              Remover Produto
-            </button>
+                  className='text-start text-xs font-semibold text-red-500 hover:text-red-700 sm:text-sm md:text-sm'
+                  onClick={() => removeProduct(product.id)}
+                >
+                  Remover Produto
+                </button>
               </div>
             ))}
           </div>
         </>
       ) : (
-        <p className='text-xl font-bold text-center'>
+        <p className='text-center text-xl font-bold lg:text-4xl'>
           Você não tem produtos cadastrados :(
         </p>
       )}
 
-      <div className='mt-10 mb-5 flex items-center justify-center'>
-      <button onClick={handleModal} className='rounded-lg bg-blue-500 p-5 text-center text-xl font-bold text-white hover:bg-blue-600'>
-              Adicionar produto
-            </button>
+      <div className='mb-5 mt-10 flex items-center justify-center'>
+        <button
+          onClick={handleModal}
+          className='rounded-lg bg-blue-500 p-5 text-center text-xl font-bold text-white hover:bg-blue-600 lg:text-2xl lg:p-8'
+        >
+          Adicionar produto
+        </button>
       </div>
 
-      {isOpen && <ModalProduct/>}
+      {isOpen && <ModalProduct />}
     </div>
   );
 }

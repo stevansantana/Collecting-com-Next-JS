@@ -119,193 +119,202 @@ export default function Register() {
 
   return (
     <section className='bg-white p-12 shadow-lg mt-16 mb-16'>
-      <div className='mb-10 flex items-center justify-center'>
-        <FontAwesomeIcon icon={faUser} className='mr-3 h-8 w-8' />
-        <h1 className='text-3xl'>Cadastre-se</h1>
+  <div className='mb-10 flex items-center justify-center'>
+    <FontAwesomeIcon icon={faUser} className='mr-3 h-8 w-8' />
+    <h1 className='text-3xl'>Cadastre-se</h1>
+  </div>
+
+  <form onSubmit={handleSubmit}>
+    <div className='grid gap-5 lg:grid-cols-2'>
+      {/* Primeira linha com Nome e CPF */}
+      <div className='flex flex-col'>
+        <label
+          className={`${errors.userName ? 'text-red-500' : 'text-black'}`}
+          htmlFor='fName'
+        >
+          Nome
+        </label>
+        <input
+          className={`${
+            errors.userName
+              ? 'border-red-500 bg-red-50 text-red-500 placeholder-red-500'
+              : 'border-gray-300 text-black placeholder-gray-400'
+          } mb-5 mt-1 rounded-lg`}
+          type='text'
+          name='userName'
+          id='fName'
+          required
+          minLength={3}
+          maxLength={30}
+          value={formData.userName}
+          onChange={handleChange}
+        />
+        {errors.userName && (
+          <span className='max-w-52 text-xs text-red-500'>
+            {errors.userName}
+          </span>
+        )}
       </div>
 
-      <form onSubmit={handleSubmit}>
-          <div className='flex flex-col'>
-            <label
-              className={`${errors.userName ? 'text-red-500' : 'text-black'}`}
-              htmlFor='fName'
-            >
-              Nome
-            </label>
-            <input
-              className={`${
-                errors.userName
-                  ? 'border-red-500 bg-red-50 text-red-500 placeholder-red-500'
-                  : 'border-gray-300 text-black placeholder-gray-400'
-              } mb-5 mt-1 rounded-lg`}
-              type='text'
-              name='userName'
-              id='fName'
-              required
-              minLength={3}
-              maxLength={30}
-              value={formData.userName}
-              onChange={handleChange}
-            />
-            {errors.userName && (
-              <span className='max-w-52 text-xs text-red-500'>
-                {errors.userName}
-              </span>
-            )}
-          </div>
-
-          <div className='flex flex-col'>
-            <label
-              className={`${errors.cpf ? 'text-red-500' : 'text-black'}`}
-              htmlFor='fCpf'
-            >
-              CPF
-            </label>
-            <input
-              className={`${
-                errors.cpf
-                  ? 'border-red-500 bg-red-50 text-red-500 placeholder-red-500'
-                  : 'border-gray-300 text-black placeholder-gray-400'
-              } mb-5 mt-1 rounded-lg`}
-              type='text'
-              name='cpf'
-              id='fCpf'
-              required
-              minLength={11}
-              maxLength={11}
-              value={formData.cpf}
-              onChange={handleChange}
-            />
-            {errors.cpf && (
-              <span className='max-w-52 text-xs text-red-500'>
-                {errors.cpf}
-              </span>
-            )}
-          </div>
-
-          <div className='flex flex-col'>
-            <label
-              className={`block ${errors.email ? 'text-red-500' : 'text-black'}`}
-              htmlFor='fEmail'
-            >
-              Email
-            </label>
-            <input
-              className={`${
-                errors.email
-                  ? 'border-red-500 bg-red-50 text-red-500 placeholder-red-500'
-                  : 'border-gray-300 text-black placeholder-gray-400'
-              } mb-5 mt-1 rounded-lg`}
-              type='email'
-              name='email'
-              id='fEmail'
-              required
-              value={formData.email}
-              onChange={handleChange}
-            />
-            {errors.email && (
-              <span className='max-w-52 text-xs text-red-500'>
-                {errors.email}
-              </span>
-            )}
-          </div>
-
-          <div className='flex flex-col'>
-            <label
-              className={`block ${errors.cellphone ? 'text-red-500' : 'text-black'}`}
-              htmlFor='fTel'
-            >
-              Celular
-            </label>
-            <input
-              className={`${
-                errors.cellphone
-                  ? 'border-red-500 bg-red-50 text-red-500 placeholder-red-500'
-                  : 'border-gray-300 text-black placeholder-gray-400'
-              } mb-5 mt-1 rounded-lg`}
-              type='tel'
-              name='cellphone'
-              placeholder='(DDD) 9xxxx-xxxx'
-              id='fTel'
-              minLength={11}
-              maxLength={11}
-              required
-              value={formData.cellphone}
-              onChange={handleChange}
-            />
-            {errors.cellphone && (
-              <span className='max-w-52 text-xs text-red-500'>
-                {errors.cellphone}
-              </span>
-            )}
-          </div>
-
-          <div className='flex flex-col'>
-            <label
-              className={`block ${errors.password ? 'text-red-500' : 'text-black'}`}
-              htmlFor='fPassword'
-            >
-              Senha
-            </label>
-            <input
-              className={`${
-                errors.password
-                  ? 'border-red-500 bg-red-50 text-red-500 placeholder-red-500'
-                  : 'border-gray-300 text-black placeholder-gray-400'
-              } mb-5 mt-1 rounded-lg`}
-              type='password'
-              name='password'
-              minLength={6}
-              maxLength={12}
-              id='fPassword'
-              required
-              value={formData.password}
-              onChange={handleChange}
-            />
-            {errors.password && (
-              <span className='max-w-52 text-xs text-red-500'>
-                {errors.password}
-              </span>
-            )}
-          </div>
-
-          <div className='flex flex-col'>
-            <label
-              className={`block ${errors.confirmPassword ? 'text-red-500' : 'text-black'}`}
-              htmlFor='fConfPassword'
-            >
-              Confirmar Senha
-            </label>
-            <input
-              className={`${
-                errors.confirmPassword
-                  ? 'border-red-500 bg-red-50 text-red-500 placeholder-red-500'
-                  : 'border-gray-300 text-black placeholder-gray-400'
-              } mt-1 rounded-lg`}
-              type='password'
-              name='confirmPassword'
-              minLength={6}
-              maxLength={12}
-              id='fConfirmPassword'
-              required
-              value={formData.confirmPassword}
-              onChange={handleChange}
-            />
-            {errors.confirmPassword && (
-              <span className='text-xs text-red-500'>
-                {errors.confirmPassword}
-              </span>
-            )}
-          </div>
-
+      <div className='flex flex-col'>
+        <label
+          className={`${errors.cpf ? 'text-red-500' : 'text-black'}`}
+          htmlFor='fCpf'
+        >
+          CPF
+        </label>
         <input
-          className='mt-10 block w-full cursor-pointer rounded-lg bg-blue-600 p-3 font-bold text-white hover:bg-black hover:font-bold'
-          type='submit'
-          value='Cadastrar'
-          //onClick={showModal}
+          className={`${
+            errors.cpf
+              ? 'border-red-500 bg-red-50 text-red-500 placeholder-red-500'
+              : 'border-gray-300 text-black placeholder-gray-400'
+          } mb-5 mt-1 rounded-lg`}
+          type='text'
+          name='cpf'
+          id='fCpf'
+          required
+          minLength={11}
+          maxLength={11}
+          value={formData.cpf}
+          onChange={handleChange}
         />
-      </form>
-      {isOpen && <Modal />}
-    </section>
+        {errors.cpf && (
+          <span className='max-w-52 text-xs text-red-500'>
+            {errors.cpf}
+          </span>
+        )}
+      </div>
+    </div>
+
+    <div className='grid gap-5 lg:grid-cols-2'>
+      {/* Segunda linha com Email e Celular */}
+      <div className='flex flex-col'>
+        <label
+          className={`block ${errors.email ? 'text-red-500' : 'text-black'}`}
+          htmlFor='fEmail'
+        >
+          Email
+        </label>
+        <input
+          className={`${
+            errors.email
+              ? 'border-red-500 bg-red-50 text-red-500 placeholder-red-500'
+              : 'border-gray-300 text-black placeholder-gray-400'
+          } mb-5 mt-1 rounded-lg`}
+          type='email'
+          name='email'
+          id='fEmail'
+          required
+          value={formData.email}
+          onChange={handleChange}
+        />
+        {errors.email && (
+          <span className='max-w-52 text-xs text-red-500'>
+            {errors.email}
+          </span>
+        )}
+      </div>
+
+      <div className='flex flex-col'>
+        <label
+          className={`block ${errors.cellphone ? 'text-red-500' : 'text-black'}`}
+          htmlFor='fTel'
+        >
+          Celular
+        </label>
+        <input
+          className={`${
+            errors.cellphone
+              ? 'border-red-500 bg-red-50 text-red-500 placeholder-red-500'
+              : 'border-gray-300 text-black placeholder-gray-400'
+          } mb-5 mt-1 rounded-lg`}
+          type='tel'
+          name='cellphone'
+          placeholder='(DDD) 9xxxx-xxxx'
+          id='fTel'
+          minLength={11}
+          maxLength={11}
+          required
+          value={formData.cellphone}
+          onChange={handleChange}
+        />
+        {errors.cellphone && (
+          <span className='max-w-52 text-xs text-red-500'>
+            {errors.cellphone}
+          </span>
+        )}
+      </div>
+    </div>
+
+    {/* Terceira linha com Senha e Confirmar Senha */}
+    <div className='grid gap-5 lg:grid-cols-2'>
+      <div className='flex flex-col'>
+        <label
+          className={`block ${errors.password ? 'text-red-500' : 'text-black'}`}
+          htmlFor='fPassword'
+        >
+          Senha
+        </label>
+        <input
+          className={`${
+            errors.password
+              ? 'border-red-500 bg-red-50 text-red-500 placeholder-red-500'
+              : 'border-gray-300 text-black placeholder-gray-400'
+          } mb-5 mt-1 rounded-lg`}
+          type='password'
+          name='password'
+          minLength={6}
+          maxLength={12}
+          id='fPassword'
+          required
+          value={formData.password}
+          onChange={handleChange}
+        />
+        {errors.password && (
+          <span className='max-w-52 text-xs text-red-500'>
+            {errors.password}
+          </span>
+        )}
+      </div>
+
+      <div className='flex flex-col'>
+        <label
+          className={`block ${errors.confirmPassword ? 'text-red-500' : 'text-black'}`}
+          htmlFor='fConfPassword'
+        >
+          Confirmar Senha
+        </label>
+        <input
+          className={`${
+            errors.confirmPassword
+              ? 'border-red-500 bg-red-50 text-red-500 placeholder-red-500'
+              : 'border-gray-300 text-black placeholder-gray-400'
+          } mt-1 rounded-lg`}
+          type='password'
+          name='confirmPassword'
+          minLength={6}
+          maxLength={12}
+          id='fConfirmPassword'
+          required
+          value={formData.confirmPassword}
+          onChange={handleChange}
+        />
+        {errors.confirmPassword && (
+          <span className='text-xs text-red-500'>
+            {errors.confirmPassword}
+          </span>
+        )}
+      </div>
+    </div>
+
+    <input
+      className='mt-10 block w-full cursor-pointer rounded-lg bg-blue-600 p-3 font-bold text-white hover:bg-black hover:font-bold'
+      type='submit'
+      value='Cadastrar'
+    />
+  </form>
+  {isOpen && <Modal />}
+</section>
+
   );
 }

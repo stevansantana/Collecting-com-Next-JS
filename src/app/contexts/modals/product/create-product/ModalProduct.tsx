@@ -26,27 +26,27 @@ export default function ModalRegister() {
           <form>
             <div className="flex flex-col mb-5">
               <label htmlFor="pName">Nome do produto</label>
-              <input type="text" name="pName" id="pName" />
+              <input type="text" name="pName" id="pName" className='rounded'/>
             </div>
 
             <div className="flex flex-col mb-5">
               <label htmlFor="pPrice">Preço</label>
-              <input type="text" name="pPrice" id="pPrice" />
+              <input type="text" name="pPrice" id="pPrice" className='rounded'/>
             </div>
 
             <div className="flex flex-col mb-5">
               <label htmlFor="pCategory">Categoria</label>
-              <input type="text" name="pCategory" id="pCategory" />
+              <input type="text" name="pCategory" id="pCategory" className='rounded'/>
             </div>
 
             <div className="flex flex-col mb-5">
               <label htmlFor="pDescription">Descriçao</label>
-              <input type="text" name="pDescription" id="pDescription" />
+              <input type="text" name="pDescription" id="pDescription" className='rounded'/>
             </div>
 
             <div className="flex flex-col mb-5">
               <label htmlFor="pImage">Imagem do Produto</label>
-              <input type="file" id="pImage" name="pImage" accept="image/*" />
+              <input type="file" id="pImage" name="pImage" accept="image/*" className='rounded'/>
             </div>
 
             <button
