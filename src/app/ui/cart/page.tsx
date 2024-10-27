@@ -79,14 +79,14 @@ export default function Cart() {
           </div>
 
           <div className='flex items-center basis-1/6 justify-between w-full'>
-            <p className='text-xs font-bold mr-4 sm:text-sm md:text-base lg:text-lg'>{formatCurrency(product.price)}</p>
-
-            <button
+          <button
               className='text-xs text-red-500 hover:text-red-700 font-semibold sm:text-sm md:text-base lg:text-lg'
               onClick={() => removeProduct(product.id)}
             >
               Remover
             </button>
+            
+            <p className='text-xs font-bold mr-4 sm:text-sm md:text-base lg:text-lg'>{formatCurrency(product.price)}</p>
           </div>
         </div>
       ))}

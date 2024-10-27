@@ -1,40 +1,32 @@
-import Image from 'next/image';
+'use client';
 
-type Product = {
-  id: number;
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
+
+interface Product {
+  id: string;
   title: string;
   price: number;
-  description: string;
   image: string;
-};
+}
 
-const products: Product[] = [
-  {
-    id: 1,
-    title: 'Produto 1',
-    price: 10,
-    description: 'Primeiro produto',
-    image: '/',
-  },
+const url: string = 'https://fakestoreapi.com/products';
 
-  {
-    id: 2,
-    title: 'Produto 2',
-    price: 20,
-    description: 'Segundo produto',
-    image: '/',
-  },
+export default function Purchase() {
+  const [products, setProducts] = useState<Product[]>([]);
+  async function getProducts(): Promise<void> {
+    const response = await fetch(url);
 
-  {
-    id: 3,
-    title: 'Produto 3',
-    price: 30,
-    description: 'Terceiro produto',
-    image: '/',
-  },
-];
+    if (response.status === 200) {
+      const data: Product[] = await response.json();
+      setProducts(data);
+    }
+  }
 
-export default function purchase() {
+  useEffect(() => {
+    getProducts();
+  }, []);
+
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat('pt-BR', {
       style: 'currency',
@@ -69,8 +61,8 @@ export default function purchase() {
                     height={50}
                   />
                   <h2 className='mb-3 text-xs sm:text-sm md:text-base lg:text-xl'>
-                    {product.title.length > 20
-                      ? product.title.substring(0, 20) + '...'
+                    {product.title.length > 10
+                      ? product.title.substring(0, 10) + '...'
                       : product.title}
                   </h2>
                 </div>
