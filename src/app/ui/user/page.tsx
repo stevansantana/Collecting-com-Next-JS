@@ -78,12 +78,21 @@ export default function User() {
                   </h2>
                 </div>
 
-                <button
-                  className='text-start text-xs font-semibold text-red-500 hover:text-red-700 sm:text-sm md:text-sm'
-                  onClick={() => removeProduct(product.id)}
+                <div className='flex justify-between items-center'>
+                  <button
+                    className='text-start text-xs font-semibold text-red-500 hover:text-red-700 sm:text-sm md:text-sm'
+                    onClick={() => removeProduct(product.id)}
+                  >
+                    Remover Produto
+                  </button>
+
+                  <button
+                  className='text-start text-xs font-semibold text-blue-500 hover:text-blue-700 sm:text-sm md:text-sm'
+                  onClick={handleModal}
                 >
-                  Remover Produto
+                  Editar
                 </button>
+                </div>
               </div>
             ))}
           </div>
