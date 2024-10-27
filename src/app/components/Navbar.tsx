@@ -52,8 +52,8 @@ export const Navbar: React.FC = () => {
               </li>
               <li className='flex justify-center lg:justify-start'>
                 <Link
-                  className={`link ${pathname === '/ui/meus-pedidos' ? 'font-bold' : ''}  w-full text-center p-4 hover:bg-slate-200 sm:text-base lg:p-0 lg:hover:bg-transparent`}
-                  href='/ui/meusPedidos'
+                  className={`link ${pathname === '/ui/purchase' ? 'font-bold' : ''}  w-full text-center p-4 hover:bg-slate-200 sm:text-base lg:p-0 lg:hover:bg-transparent`}
+                  href='/ui/purchase'
                 >
                   Meus pedidos
                 </Link>
