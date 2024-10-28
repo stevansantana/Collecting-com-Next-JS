@@ -1,9 +1,8 @@
-// components/Modal.tsx
 'use client';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/redux/store';
-import { closeModal } from './modal-slice';
+import { closeModal } from '../modal-slice';
 import {
   Description,
   Dialog,

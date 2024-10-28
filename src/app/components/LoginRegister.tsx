@@ -4,9 +4,9 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { z } from 'zod';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { openModal } from '@/redux/features/modal/modal-slice';
+import { openModal } from '@/redux/features/modals/modal-slice';
 import { RootState } from '@/redux/store';
-import Modal from '@/redux/features/modal/Modal';
+import Modal from '@/redux/features/modals/register/Modal';
 
 const registerSchema = z
   .object({
@@ -113,9 +113,8 @@ export const LoginRegister: React.FC = () => {
       setErrors(formattedErrors);
     } else {
       setErrors({});
-      console.log('Formulário válido!');
-      //setIsOpen(!isOpen);
       dispatch(openModal());
+      console.log('Modal aberto!');
     }
   };
 
@@ -128,7 +127,6 @@ export const LoginRegister: React.FC = () => {
 
       <form onSubmit={handleSubmit}>
         <div className='grid gap-5 lg:grid-cols-2'>
-          {/* Primeira linha com Nome e CPF */}
           <div className='flex flex-col'>
             <label
               className={`${errors.userName ? 'text-red-500' : 'text-black'}`}
@@ -189,7 +187,6 @@ export const LoginRegister: React.FC = () => {
         </div>
 
         <div className='grid gap-5 lg:grid-cols-2'>
-          {/* Segunda linha com Email e Celular */}
           <div className='flex flex-col'>
             <label
               className={`block ${errors.email ? 'text-red-500' : 'text-black'}`}
@@ -248,7 +245,6 @@ export const LoginRegister: React.FC = () => {
           </div>
         </div>
 
-        {/* Terceira linha com Senha e Confirmar Senha */}
         <div className='grid gap-5 lg:grid-cols-2'>
           <div className='flex flex-col'>
             <label
@@ -262,7 +258,7 @@ export const LoginRegister: React.FC = () => {
                 errors.password
                   ? 'border-red-500 bg-red-50 text-red-500 placeholder-red-500'
                   : 'border-gray-300 text-black placeholder-gray-400'
-              } mb-5 mt-1 rounded-lg`}
+              } mb-2 mt-1 rounded-lg`}
               type='password'
               name='password'
               minLength={6}
@@ -291,7 +287,7 @@ export const LoginRegister: React.FC = () => {
                 errors.confirmPassword
                   ? 'border-red-500 bg-red-50 text-red-500 placeholder-red-500'
                   : 'border-gray-300 text-black placeholder-gray-400'
-              } mt-1 rounded-lg`}
+              } mb-2 mt-1 rounded-lg`}
               type='password'
               name='confirmPassword'
               minLength={6}

@@ -5,10 +5,9 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import iconCloseMenu from '@/public/images/svg/icon-close-menu.svg';
-import { RootState } from '@/redux/store';
+import { RootState, AppDispatch } from '@/redux/store';
 import { logOut } from '@/redux/features/auth/auth-slice';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch } from '@/redux/store';
 
 export const Navbar: React.FC = () => {
   const pathname = usePathname();

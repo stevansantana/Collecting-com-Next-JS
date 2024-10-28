@@ -1,9 +1,11 @@
 'use client';
 
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { ModalProductContext } from '@/app/contexts/modals/product/create-product/ModalProductContext';
-import ModalProduct from '@/app/contexts/modals/product/create-product/ModalProduct';
+import { useDispatch, useSelector } from 'react-redux';
+import { openModal } from '@/redux/features/modals/modal-slice';
+import { RootState } from '@/redux/store';
+import Modal from '@/redux/features/modals/product/Modal';
 
 interface Product {
   id: string;
@@ -24,7 +26,8 @@ const formatCurrency = (value: number) => {
 const url: string = 'https://fakestoreapi.com/products';
 
 export default function User() {
-  const { isOpen, setIsOpen } = useContext(ModalProductContext);
+  const dispatch = useDispatch();
+  const isOpen = useSelector((state: RootState) => state.modalReducer.isOpen);
   const [products, setProducts] = useState<Product[]>([]);
 
   async function getProducts() {
@@ -46,7 +49,8 @@ export default function User() {
   };
 
   function handleModal() {
-    isOpen ? setIsOpen(false) : setIsOpen(true);
+    dispatch(openModal());
+    console.log('Modal aberto');
   }
 
   return (
@@ -72,13 +76,15 @@ export default function User() {
                 </div>
 
                 <div className='mb-10'>
-                  <h1 className='mb-3 truncate font-bold lg:text-xl'>{product.title}</h1>
+                  <h1 className='mb-3 truncate font-bold lg:text-xl'>
+                    {product.title}
+                  </h1>
                   <h2 className='text-xs font-bold sm:text-sm md:text-base lg:text-lg'>
                     {formatCurrency(product.price)}
                   </h2>
                 </div>
 
-                <div className='flex justify-between items-center'>
+                <div className='flex items-center justify-between'>
                   <button
                     className='text-start text-xs font-semibold text-red-500 hover:text-red-700 sm:text-sm md:text-sm'
                     onClick={() => removeProduct(product.id)}
@@ -87,11 +93,11 @@ export default function User() {
                   </button>
 
                   <button
-                  className='text-start text-xs font-semibold text-blue-500 hover:text-blue-700 sm:text-sm md:text-sm'
-                  onClick={handleModal}
-                >
-                  Editar
-                </button>
+                    className='text-start text-xs font-semibold text-blue-500 hover:text-blue-700 sm:text-sm md:text-sm'
+                    onClick={handleModal}
+                  >
+                    Editar
+                  </button>
                 </div>
               </div>
             ))}
@@ -106,13 +112,13 @@ export default function User() {
       <div className='mb-5 mt-10 flex items-center justify-center'>
         <button
           onClick={handleModal}
-          className='rounded-lg bg-blue-500 p-5 text-center text-xl font-bold text-white hover:bg-blue-600 lg:text-2xl lg:p-8'
+          className='rounded-lg bg-blue-500 p-5 text-center text-xl font-bold text-white hover:bg-blue-600 lg:p-8 lg:text-2xl'
         >
           Adicionar produto
         </button>
       </div>
 
-      {isOpen && <ModalProduct />}
+      {isOpen && <Modal />}
     </div>
   );
 }
