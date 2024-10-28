@@ -1,6 +1,6 @@
 'use client';
-
 import { useSelector, useDispatch } from 'react-redux';
+import { useRouter } from 'next/navigation';
 import { RootState } from '@/redux/store';
 import { closeModal } from '../modal-slice';
 import {
@@ -16,11 +16,17 @@ import Link from 'next/link';
 export default function Modal() {
   const dispatch = useDispatch();
   const isOpen = useSelector((state: RootState) => state.modalReducer.isOpen);
+  const router = useRouter(); 
+
+  const handleClose = () => {
+    dispatch(closeModal());
+    router.push('/ui/login');
+  };
 
   return (
     <Dialog
       open={isOpen}
-      onClose={() => dispatch(closeModal())}
+      onClose={handleClose}
       className='fixed inset-0 z-50 flex items-center justify-center'
     >
       <div
@@ -36,7 +42,7 @@ export default function Modal() {
           <FontAwesomeIcon
             icon={faSquareXmark}
             className='h-7 w-7 cursor-pointer'
-            onClick={() => dispatch(closeModal())}
+            onClick={handleClose}
           />
         </header>
 
@@ -53,7 +59,7 @@ export default function Modal() {
             <Link
               href='/ui/login'
               className='cursor-pointer rounded-lg bg-blue-600 p-3 font-bold text-white hover:bg-black hover:font-bold'
-              onClick={() => dispatch(closeModal())}
+              onClick={handleClose}
             >
               Fechar
             </Link>
