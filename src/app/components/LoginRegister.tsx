@@ -1,12 +1,12 @@
 'use client';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
-import { useContext } from 'react';
-import { ModalContext } from '@/app/contexts/modals/auth/register/ModalContext';
-import Modal from '@/app/contexts/modals/auth/register/Modal';
 import { z } from 'zod';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { openModal } from '@/redux/features/modal/modal-slice';
+import { RootState } from '@/redux/store';
+import Modal from '@/redux/features/modal/Modal';
 
 const registerSchema = z
   .object({
@@ -38,7 +38,8 @@ const registerSchema = z
   });
 
 export const LoginRegister: React.FC = () => {
-  const { isOpen, setIsOpen } = useContext(ModalContext);
+  const dispatch = useDispatch();
+  const isOpen = useSelector((state: RootState) => state.modalReducer.isOpen);
   const [formData, setFormData] = useState({
     userName: '',
     cpf: '',
@@ -113,7 +114,8 @@ export const LoginRegister: React.FC = () => {
     } else {
       setErrors({});
       console.log('Formulário válido!');
-      setIsOpen(!isOpen);
+      //setIsOpen(!isOpen);
+      dispatch(openModal());
     }
   };
 
@@ -313,6 +315,7 @@ export const LoginRegister: React.FC = () => {
           value='Cadastrar'
         />
       </form>
+
       {isOpen && <Modal />}
     </section>
   );

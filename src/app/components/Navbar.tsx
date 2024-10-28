@@ -5,15 +5,17 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import iconCloseMenu from '@/public/images/svg/icon-close-menu.svg';
-import { useAppSelector } from '@/redux/store';
-import { logOut } from '@/redux/features/auth-slice';
-import { useDispatch } from 'react-redux';
+import { RootState } from '@/redux/store';
+import { logOut } from '@/redux/features/auth/auth-slice';
+import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '@/redux/store';
 
 export const Navbar: React.FC = () => {
   const pathname = usePathname();
   const [menu, setMenu] = useState<boolean>(false);
-  const email = useAppSelector((state) => state.authReducer.value.userName);
+  const email = useSelector(
+    (state: RootState) => state.authReducer.value.userName,
+  );
   const dispatch = useDispatch<AppDispatch>();
   const user: boolean = true;
 
@@ -74,7 +76,7 @@ export const Navbar: React.FC = () => {
                   className={`link ${pathname === '/ui/user' ? 'font-bold' : ''} w-full p-4 text-center hover:bg-slate-200 sm:text-base lg:p-0 lg:hover:bg-transparent`}
                   href='/ui/user'
                 >
-                  {email}
+                  nome
                 </Link>
               </li>
               <li className='flex justify-center lg:justify-start'>
