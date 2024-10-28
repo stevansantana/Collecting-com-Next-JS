@@ -1,10 +1,12 @@
 'use client';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import { z } from 'zod';
 import { useState } from 'react';
+import { logIn } from '@/redux/features/auth-slice';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '@/redux/store';
 
 const loginSchema = z.object({
   email: z.string().email({ message: 'Email inválido.' }),
@@ -27,6 +29,7 @@ export const LoginForm: React.FC = () => {
     const [passwordError, setPasswordError] = useState<string | null>(null);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const dispatch = useDispatch<AppDispatch>();
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
@@ -44,6 +47,7 @@ export const LoginForm: React.FC = () => {
           }
         });
       } else {
+        dispatch(logIn(email));
         console.log('Formulário válido!', result.data);
       }
     };

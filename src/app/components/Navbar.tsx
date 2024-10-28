@@ -5,14 +5,24 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import iconCloseMenu from '@/public/images/svg/icon-close-menu.svg';
+import { useAppSelector } from '@/redux/store';
+import { logOut } from '@/redux/features/auth-slice';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '@/redux/store';
 
 export const Navbar: React.FC = () => {
   const pathname = usePathname();
-  const user: boolean = true;
   const [menu, setMenu] = useState<boolean>(false);
+  const email = useAppSelector((state) => state.authReducer.value.userName);
+  const dispatch = useDispatch<AppDispatch>();
+  const user: boolean = true;
 
   function handleMenu() {
     setMenu(!menu);
+  }
+
+  function handleLogOut() {
+    dispatch(logOut());
   }
 
   return (
@@ -26,9 +36,10 @@ export const Navbar: React.FC = () => {
         onClick={handleMenu}
       />
 
-      <nav className={`fixed top-0 right-0 w-[65%] h-full bg-[hsl(0,0%,98%)] z-[999] lg:w-auto lg:static lg:flex lg:items-center lg:justify-between lg:bg-transparent ${menu ? 'block' : 'hidden'} lg:block`}>
-        
-        <div className='p-5 flex justify-end lg:hidden'>
+      <nav
+        className={`fixed right-0 top-0 z-[999] h-full w-[65%] bg-[hsl(0,0%,98%)] lg:static lg:flex lg:w-auto lg:items-center lg:justify-between lg:bg-transparent ${menu ? 'block' : 'hidden'} lg:block`}
+      >
+        <div className='flex justify-end p-5 lg:hidden'>
           <Image
             src={iconCloseMenu}
             alt='icon-close-menu'
@@ -39,12 +50,12 @@ export const Navbar: React.FC = () => {
           />
         </div>
 
-        <ul className='h-[45%] flex flex-col lg:flex-row lg:space-x-8 lg:h-auto'>
+        <ul className='flex h-[45%] flex-col lg:h-auto lg:flex-row lg:space-x-8'>
           {user ? (
             <>
               <li className='flex justify-center lg:justify-start'>
                 <Link
-                  className={`link ${pathname === '/ui/cart' ? 'font-bold' : ''} w-full text-center p-4 hover:bg-slate-200 sm:text-base lg:p-0 lg:hover:bg-transparent `}
+                  className={`link ${pathname === '/ui/cart' ? 'font-bold' : ''} w-full p-4 text-center hover:bg-slate-200 sm:text-base lg:p-0 lg:hover:bg-transparent`}
                   href='/ui/cart'
                 >
                   Carrinho
@@ -52,7 +63,7 @@ export const Navbar: React.FC = () => {
               </li>
               <li className='flex justify-center lg:justify-start'>
                 <Link
-                  className={`link ${pathname === '/ui/purchase' ? 'font-bold' : ''}  w-full text-center p-4 hover:bg-slate-200 sm:text-base lg:p-0 lg:hover:bg-transparent`}
+                  className={`link ${pathname === '/ui/purchase' ? 'font-bold' : ''} w-full p-4 text-center hover:bg-slate-200 sm:text-base lg:p-0 lg:hover:bg-transparent`}
                   href='/ui/purchase'
                 >
                   Meus pedidos
@@ -60,16 +71,17 @@ export const Navbar: React.FC = () => {
               </li>
               <li className='flex justify-center lg:justify-start'>
                 <Link
-                  className={`link ${pathname === '/ui/user' ? 'font-bold' : ''}  w-full text-center p-4 hover:bg-slate-200 sm:text-base lg:p-0 lg:hover:bg-transparent`}
+                  className={`link ${pathname === '/ui/user' ? 'font-bold' : ''} w-full p-4 text-center hover:bg-slate-200 sm:text-base lg:p-0 lg:hover:bg-transparent`}
                   href='/ui/user'
                 >
-                  Stevan
+                  {email}
                 </Link>
               </li>
               <li className='flex justify-center lg:justify-start'>
                 <Link
-                  className={`link ${pathname === '/logout' ? 'font-bold' : ''} w-full text-center p-4 hover:bg-slate-200 sm:text-base lg:p-0 lg:hover:bg-transparent`}
+                  className={`link ${pathname === '/logout' ? 'font-bold' : ''} w-full p-4 text-center hover:bg-slate-200 sm:text-base lg:p-0 lg:hover:bg-transparent`}
                   href='/'
+                  onClick={handleLogOut}
                 >
                   Sair
                 </Link>
@@ -79,7 +91,7 @@ export const Navbar: React.FC = () => {
             <>
               <li className='flex justify-center lg:justify-start'>
                 <Link
-                  className={`link ${pathname === '/ui/login' ? 'font-bold' : ''} w-full text-center p-4 hover:bg-slate-200 sm:text-base lg:p-0 lg:hover:bg-transparent`}
+                  className={`link ${pathname === '/ui/login' ? 'font-bold' : ''} w-full p-4 text-center hover:bg-slate-200 sm:text-base lg:p-0 lg:hover:bg-transparent`}
                   href='/ui/login'
                 >
                   Login
@@ -87,7 +99,7 @@ export const Navbar: React.FC = () => {
               </li>
               <li className='flex justify-center lg:justify-start'>
                 <Link
-                  className={`link ${pathname === '/ui/register' ? 'font-bold' : ''} w-full text-center p-4 hover:bg-slate-200 sm:text-base lg:p-0 lg:hover:bg-transparent`}
+                  className={`link ${pathname === '/ui/register' ? 'font-bold' : ''} w-full p-4 text-center hover:bg-slate-200 sm:text-base lg:p-0 lg:hover:bg-transparent`}
                   href='/ui/register'
                 >
                   Cadastrar
