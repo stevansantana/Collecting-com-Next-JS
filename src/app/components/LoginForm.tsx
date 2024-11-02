@@ -4,9 +4,9 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import { z } from 'zod';
 import { useState } from 'react';
-import { logIn } from '@/redux/features/auth/auth-slice';
+import { logIn } from '@/lib/features/auth/auth-slice';
 import { useDispatch } from 'react-redux';
-import { AppDispatch } from '@/redux/store';
+import { AppDispatch } from '@/lib/store';
 
 const loginSchema = z.object({
   email: z.string().email({ message: 'Email inválido.' }),

@@ -2,9 +2,9 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useDispatch, useSelector } from 'react-redux';
-import { openModal } from '@/redux/features/modals/modal-slice';
-import { RootState } from '@/redux/store';
-import Modal from '@/redux/features/modals/product/Modal';
+import { openModal } from '@/lib/features/modals/modal-slice';
+import { RootState } from '@/lib/store';
+import Modal from '@/lib/features/modals/product/Modal';
 
 interface Product {
   id: string;

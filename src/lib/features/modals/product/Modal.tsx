@@ -1,6 +1,6 @@
 import { Dialog, DialogPanel, DialogTitle } from '@headlessui/react';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '@/redux/store';
+import { RootState } from '@/lib/store';
 import { closeModal } from '../modal-slice';
 
 export default function Modal() {

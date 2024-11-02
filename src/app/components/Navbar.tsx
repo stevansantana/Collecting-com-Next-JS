@@ -5,8 +5,8 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import iconCloseMenu from '@/public/images/svg/icon-close-menu.svg';
-import { RootState, AppDispatch } from '@/redux/store';
-import { logOut } from '@/redux/features/auth/auth-slice';
+import { RootState, AppDispatch } from '@/lib/store';
+import { logOut } from '@/lib/features/auth/auth-slice';
 import { useDispatch, useSelector } from 'react-redux';
 
 export const Navbar: React.FC = () => {

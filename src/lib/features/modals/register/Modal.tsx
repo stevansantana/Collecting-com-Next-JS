@@ -1,7 +1,7 @@
 'use client';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation';
-import { RootState } from '@/redux/store';
+import { RootState } from '@/lib/store';
 import { closeModal } from '../modal-slice';
 import {
   Description,
@@ -16,7 +16,7 @@ import Link from 'next/link';
 export default function Modal() {
   const dispatch = useDispatch();
   const isOpen = useSelector((state: RootState) => state.modalReducer.isOpen);
-  const router = useRouter(); 
+  const router = useRouter();
 
   const handleClose = () => {
     dispatch(closeModal());

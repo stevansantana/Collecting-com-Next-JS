@@ -4,9 +4,9 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { z } from 'zod';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { openModal } from '@/redux/features/modals/modal-slice';
-import { RootState } from '@/redux/store';
-import Modal from '@/redux/features/modals/register/Modal';
+import { openModal } from '@/lib/features/modals/modal-slice';
+import { RootState } from '@/lib/store';
+import Modal from '@/lib/features/modals/register/Modal';
 
 const registerSchema = z
   .object({
