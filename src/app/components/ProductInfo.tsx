@@ -2,11 +2,18 @@
 import { useSearchParams } from 'next/navigation';
 import { products } from '@/data/products';
 import Image from 'next/image';
+import { addProduct } from '@/lib/features/cart/cart-reducer';
+import { useDispatch } from 'react-redux';
 
 export const ProductInfo: React.FC = () => {
   const searchParams = useSearchParams();
   const productId = searchParams.get('id');
   const product = products.find((p) => p.id === Number(productId));
+  const dispatch = useDispatch();
+
+  function addProductToCart() {
+    dispatch(addProduct(product));
+  }
 
   return (
     <div className='container mx-auto mb-12 mt-12 px-4'>
@@ -30,8 +37,8 @@ export const ProductInfo: React.FC = () => {
                 {product.price} reais
               </span>
               <button
-                //onClick={() => router.push('/ui/cart')}
                 className='mt-auto w-full rounded-lg bg-blue-600 p-3 text-center font-bold text-white hover:bg-black'
+                onClick={addProductToCart}
               >
                 Adicionar ao carrinho
               </button>
