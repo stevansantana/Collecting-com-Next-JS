@@ -36,7 +36,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         onClick={() => router.push(`/ui/product?id=${product.id}`)}
         className='mt-auto w-full rounded-lg bg-blue-600 p-3 text-center font-bold text-white hover:bg-black'
       >
-        Adicionar ao carrinho
+        Comprar
       </button>
     </div>
   );
