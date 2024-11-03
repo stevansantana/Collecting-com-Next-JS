@@ -2,17 +2,33 @@
 import { useSearchParams } from 'next/navigation';
 import { products } from '@/data/products';
 import Image from 'next/image';
-import { addProduct } from '@/lib/features/cart/cart-reducer';
-import { useDispatch } from 'react-redux';
+import { addProduct, removeProduct } from '@/lib/features/cart/cart-reducer';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@/lib/store';
 
 export const ProductInfo: React.FC = () => {
   const searchParams = useSearchParams();
   const productId = searchParams.get('id');
   const product = products.find((p) => p.id === Number(productId));
   const dispatch = useDispatch();
+  const { cart } = useSelector((state: RootState) => state.cartReducer);
+  const isProductOnCart =
+    cart.find((productOnCart) => product?.id === productOnCart.id) !== undefined;
+
+  function removeProductFromCart() {
+   if (
+     confirm(
+       `Tem certeza que deseja remover o produto ${product?.title} do carrinho?`,
+     )
+   ) {
+     dispatch(removeProduct(product));
+     alert(`${product?.title} foi removido do carrinho`);
+   }
+  }
 
   function addProductToCart() {
     dispatch(addProduct(product));
+    alert(`${product?.title} foi adicionado ao carrinho`);
   }
 
   return (
@@ -36,12 +52,23 @@ export const ProductInfo: React.FC = () => {
               <span className='mb-4 block text-lg font-bold'>
                 {product.price} reais
               </span>
-              <button
-                className='mt-auto w-full rounded-lg bg-blue-600 p-3 text-center font-bold text-white hover:bg-black'
-                onClick={addProductToCart}
-              >
-                Adicionar ao carrinho
-              </button>
+
+              {isProductOnCart ? (
+                <button
+                  type='button'
+                  className='mt-auto w-full rounded-lg bg-red-600 p-3 text-center font-bold text-white hover:bg-red-700'
+                  onClick={removeProductFromCart}
+                >
+                  Remover do carrinho
+                </button>
+              ) : (
+                <button
+                  className='mt-auto w-full rounded-lg bg-blue-600 p-3 text-center font-bold text-white hover:bg-black'
+                  onClick={addProductToCart}
+                >
+                  Adicionar ao carrinho
+                </button>
+              )}
             </div>
           </div>
 

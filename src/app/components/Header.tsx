@@ -12,7 +12,7 @@ export const Header: React.FC = () => {
       <div>
         <Link
           className='font-sans text-2xl hover:bg-black hover:text-white sm:text-4xl'
-          href='/'
+          href='/ui/home'
         >
           COLLECTING
         </Link>

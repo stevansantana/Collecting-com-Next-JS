@@ -13,7 +13,7 @@ export default function Page() {
       <div className='mt-16 flex justify-center items-center flex-col md:flex-row'>
         <Link
           className='w-36 mb-6 rounded-lg bg-blue-600 p-5 text-center font-bold text-white hover:bg-black md:mb-0 md:mr-10'
-          href='/ui/home'
+          href='/ui/login'
         >
           Entrar
         </Link>
