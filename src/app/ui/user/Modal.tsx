@@ -1,16 +1,14 @@
 import { Dialog, DialogPanel, DialogTitle } from '@headlessui/react';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '@/lib/store';
-import { closeModal } from '../modal-slice';
 
-export default function Modal() {
-  const dispatch = useDispatch();
-  const isOpen = useSelector((state: RootState) => state.modalReducer.isOpen);
+interface ModalProps {
+  onClose: () => void;
+}
 
+export default function Modal({ onClose }: ModalProps) {
   return (
     <Dialog
-      open={isOpen}
-      onClose={() => dispatch(closeModal())}
+      open={true} 
+      onClose={onClose}
       className='fixed inset-0 z-50 flex items-center justify-center'
     >
       <div className='fixed inset-0 bg-black/30' aria-hidden='true' />
@@ -48,7 +46,7 @@ export default function Modal() {
             </div>
 
             <div className='mb-5 flex flex-col'>
-              <label htmlFor='pDescription'>Descriçao</label>
+              <label htmlFor='pDescription'>Descrição</label>
               <input
                 type='text'
                 name='pDescription'
@@ -75,6 +73,13 @@ export default function Modal() {
               Cadastrar Produto
             </button>
           </form>
+
+          <button
+            onClick={onClose}
+            className='absolute right-2 top-2 text-white'
+          >
+            Fechar
+          </button>
         </DialogPanel>
       </div>
     </Dialog>

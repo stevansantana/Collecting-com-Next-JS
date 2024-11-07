@@ -1,5 +1,5 @@
-import { LoginRegister } from '@/app/components/LoginRegister';
+import { RegisterForm } from '@/app/components/RegisterForm';
 
 export default function Register() {
-  return <LoginRegister></LoginRegister>;
+  return <RegisterForm></RegisterForm>;
 }

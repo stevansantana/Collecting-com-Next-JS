@@ -1,12 +1,10 @@
 'use client';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { z } from 'zod';
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { openModal } from '@/lib/features/modals/modal-slice';
-import { RootState } from '@/lib/store';
-import Modal from '@/lib/features/modals/register/Modal';
+import Modal from '@/app/ui/(auth)/register/Modal';
 
 const registerSchema = z
   .object({
@@ -37,9 +35,7 @@ const registerSchema = z
     path: ['confirmPassword'],
   });
 
-export const LoginRegister: React.FC = () => {
-  const dispatch = useDispatch();
-  const isOpen = useSelector((state: RootState) => state.modalReducer.isOpen);
+export const RegisterForm: React.FC = () => {
   const [formData, setFormData] = useState({
     userName: '',
     cpf: '',
@@ -49,11 +45,11 @@ export const LoginRegister: React.FC = () => {
     confirmPassword: '',
   });
   const [errors, setErrors] = useState<{ [key: string]: string | null }>({});
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const formatCpf = (value: string) => {
     const cleaned = value.replace(/\D/g, '');
     const match = cleaned.match(/^(\d{3})(\d{3})(\d{3})(\d{2})$/);
-
     if (match) {
       return `${match[1]}.${match[2]}.${match[3]}-${match[4]}`;
     }
@@ -63,7 +59,6 @@ export const LoginRegister: React.FC = () => {
   const formatCellphone = (value: string) => {
     const cleaned = value.replace(/\D/g, '');
     const match = cleaned.match(/^(\d{2})(\d{5})(\d{4})$/);
-
     if (match) {
       return `(${match[1]}) ${match[2]}-${match[3]}`;
     }
@@ -72,8 +67,8 @@ export const LoginRegister: React.FC = () => {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-
     let formattedValue: string;
+
     if (name === 'cellphone') {
       formattedValue = formatCellphone(value);
     } else if (name === 'cpf') {
@@ -113,8 +108,7 @@ export const LoginRegister: React.FC = () => {
       setErrors(formattedErrors);
     } else {
       setErrors({});
-      dispatch(openModal());
-      console.log('Modal aberto!');
+      setIsModalOpen(true); 
     }
   };
 
@@ -263,7 +257,6 @@ export const LoginRegister: React.FC = () => {
               name='password'
               minLength={6}
               maxLength={12}
-              id='fPassword'
               required
               value={formData.password}
               onChange={handleChange}
@@ -278,7 +271,7 @@ export const LoginRegister: React.FC = () => {
           <div className='flex flex-col'>
             <label
               className={`block ${errors.confirmPassword ? 'text-red-500' : 'text-black'}`}
-              htmlFor='fConfPassword'
+              htmlFor='fConfirmPassword'
             >
               Confirmar Senha
             </label>
@@ -287,32 +280,29 @@ export const LoginRegister: React.FC = () => {
                 errors.confirmPassword
                   ? 'border-red-500 bg-red-50 text-red-500 placeholder-red-500'
                   : 'border-gray-300 text-black placeholder-gray-400'
-              } mb-2 mt-1 rounded-lg`}
+              } mb-5 mt-1 rounded-lg`}
               type='password'
               name='confirmPassword'
-              minLength={6}
-              maxLength={12}
-              id='fConfirmPassword'
               required
               value={formData.confirmPassword}
               onChange={handleChange}
             />
             {errors.confirmPassword && (
-              <span className='text-xs text-red-500'>
+              <span className='max-w-52 text-xs text-red-500'>
                 {errors.confirmPassword}
               </span>
             )}
           </div>
         </div>
-
-        <input
-          className='mt-10 block w-full cursor-pointer rounded-lg bg-blue-600 p-3 font-bold text-white hover:bg-black hover:font-bold'
+        <button
+          className='mt-8 w-full rounded-lg bg-blue-600 py-2 text-white hover:bg-black'
           type='submit'
-          value='Cadastrar'
-        />
+        >
+          Cadastrar
+        </button>
       </form>
 
-      {isOpen && <Modal />}
+      {isModalOpen && <Modal closeModal={() => setIsModalOpen(false)} />}
     </section>
   );
 };
