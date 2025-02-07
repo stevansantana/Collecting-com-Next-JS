@@ -6,15 +6,15 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import iconCloseMenu from '@/public/images/svg/icon-close-menu.svg';
 import { RootState, AppDispatch } from '@/lib/store';
-import { logOut } from '@/lib/features/auth/auth-slice';
+//import { logOut } from '@/lib/features/auth/auth-slice';
 import { useDispatch, useSelector } from 'react-redux';
 
 export const Navbar: React.FC = () => {
   const pathname = usePathname();
   const [menu, setMenu] = useState<boolean>(false);
-  const email = useSelector(
-    (state: RootState) => state.authReducer.value.userName,
-  );
+  //const email = useSelector(
+    //(state: RootState) => state.authReducer.value.userName,
+  //);
   const dispatch = useDispatch<AppDispatch>();
   const user: boolean = true;
 
