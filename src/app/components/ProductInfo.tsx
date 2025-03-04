@@ -6,6 +6,14 @@ import { addProduct, removeProduct } from '@/lib/features/cart/cart-reducer';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/lib/store';
 
+const formatCurrency = (value: number) => {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+    minimumFractionDigits: 2,
+  }).format(value);
+};
+
 export const ProductInfo: React.FC = () => {
   const searchParams = useSearchParams();
   const productId = searchParams.get('id');
@@ -50,7 +58,7 @@ export const ProductInfo: React.FC = () => {
                 {product.title}
               </h1>
               <span className='mb-4 block text-lg font-bold'>
-                {product.price} reais
+                {formatCurrency(product.price)}
               </span>
 
               {isProductOnCart ? (

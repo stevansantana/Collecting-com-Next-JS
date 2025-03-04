@@ -7,6 +7,14 @@ import Image from 'next/image';
 import { removeProduct } from '@/lib/features/cart/cart-reducer';
 import { Product } from '@/data/products';
 
+const formatCurrency = (value: number) => {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+    minimumFractionDigits: 2,
+  }).format(value);
+};
+
 export const CartComponet: React.FC = () => {
   const { cart } = useSelector((state: RootState) => state.cartReducer);
   const dispatch = useDispatch();
@@ -38,28 +46,25 @@ export const CartComponet: React.FC = () => {
                   height={50}
                 />
                 <div>
-                  <h2 className='mb-3 text-xs sm:text-sm md:text-base lg:text-xl'>
+                  <h2 className='text-xs sm:text-sm md:text-base lg:text-xl'>
                     {product.title.length > 20
                       ? product.title.substring(0, 20) + '...'
                       : product.title}
                   </h2>
-                  <p className='text-xs sm:text-sm md:text-base lg:text-lg'>
-                    Quantidade:
+
+                  <p className='mt-2 text-xs font-bold sm:text-sm md:text-base lg:text-lg'>
+                    {formatCurrency(product.price)}
                   </p>
                 </div>
               </div>
 
-              <div className='flex w-full basis-1/6 items-center justify-between'>
+              <div className='flex w-full'>
                 <button
                   className='text-xs font-semibold text-red-500 hover:text-red-700 sm:text-sm md:text-base lg:text-lg'
                   onClick={() => removeProductFromCart(product)}
                 >
                   Remover
                 </button>
-
-                <p className='mr-4 text-xs font-bold sm:text-sm md:text-base lg:text-lg'>
-                  {product.price}
-                </p>
               </div>
             </div>
           ))}
